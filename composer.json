@@ -1,0 +1,66 @@
+{
+    "name": "publicala/exercises",
+    "type": "project",
+    "description": "publica.la exercises",
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "ext-mbstring": "*",
+        "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^2.0",
+        "goodnesskay/laravelpdfviewer": "^1.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^9.36",
+        "laravel/tinker": "^2.7",
+        "laravel/ui": "^3.4",
+        "predis/predis": "^1.1",
+        "shipping-docker/vessel": "~6.0",
+        "spatie/laravel-ignition": "^1.4"
+    },
+    "require-dev": {
+        "beyondcode/laravel-dump-server": "^1.0",
+        "fzaninotto/faker": "^1.4",
+        "laravel/sail": "^1.27",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}
